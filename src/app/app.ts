@@ -52,9 +52,10 @@ export class App {
     row.column1 = ''
     row.column2 = ''
 
-    // Rebind the selected values using dropdownOptions
+    // Rebind the selected values using dropdownOptions Obect rebind 
     newRow.column1 = this.dropdownOptions.find(opt => opt.value === newRow.column1?.value) || '';
     newRow.column2 = this.dropdownOptions.find(opt => opt.value === newRow.column2?.value) || '';
+    // Rebind the selected values using dropdownOptions Obect rebind 
 
   this.tableData.splice(index + 1, 0, newRow);
   this.tableData = [...this.tableData]; // trigger change detection
