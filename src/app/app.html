@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="tableData" class="mat-elevation-z8" [trackBy]="trackByIndex">
+<!-- <table mat-table [dataSource]="tableData" class="mat-elevation-z8" > -->
+
+    <!-- Column 1 -->
+    <ng-container matColumnDef="column1">
+      <th mat-header-cell *matHeaderCellDef> Column 1 </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-select [(ngModel)]="row.column1" name="col1-{{ i }}" [compareWith]="compareOptions">
+            <mat-option *ngFor="let option of dropdownOptions" [value]="option">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+  
+    <!-- Column 2 -->
+    <ng-container matColumnDef="column2">
+      <th mat-header-cell *matHeaderCellDef> Column 2 </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-select [(ngModel)]="row.column2" name="col2-{{ i }}" [compareWith]="compareOptions">
+            <mat-option *ngFor="let option of dropdownOptions" [value]="option">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+  
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+        <button mat-button color="primary" (click)="addRow(row,i)">Add</button>
+      </td>
+    </ng-container>
+  
+    <!-- Render headers and rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <pre>{{ tableData | json }}</pre>
+  
